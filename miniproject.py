@@ -1,0 +1,79 @@
+# 在这里写上你的代码 :-)
+"""
+Resistor color code calculator.
+Add your name here
+"""
+
+def get_input(Rmin, Rmax):
+    ''' Prompt user to enter desired resistance and tolerance'''
+    while True:
+        try:
+            Rdes = float(input(f'Enter desired resistance from {Rmin} to {Rmax/1e9} G ohm (examples: 11000 or 1.1e4): '))
+            if Rdes >= Rmin and Rdes <= Rmax:
+                break
+            else:
+                print('Invalid resistance, out of range')
+        except ValueError:
+            print('Invalid resistance, must be a number')
+
+    while True:
+        try:
+            tol = int(input('Enter desired tolerance of 5, 10, or 20 percent: '))
+            if tol == 5 or tol == 10 or tol == 20:
+                break
+            else:
+                print('Invalid tolerance, must be an integer 5, 10, or 20')
+        except:
+            print('Invalid tolerance, must be an integer 5, 10, or 20')
+    return Rdes, tol
+
+# Define min and max resistance values for user input, in ohms
+Rmin = 0.1
+Rmax = 70e9
+
+Rdes, tol = get_input(Rmin, Rmax)
+print(f'Finding closest nominal resistance value to {Rdes:g} ohm with tolerance {tol}%:')
+
+# Define nominal resistance values for the given tolerance.
+# Add 100 at the end of the list so that the rightmost tolerance band is included.
+# All of them start with 10 and ends with 100
+if tol == 5:
+    Rnom = [10, 11, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36, 39, 43, 47, 51, 56, 62, 68, 75, 82, 91, 100]
+#elif tol == 10:
+
+#else:  # tol == 20 case
+
+
+## Assume we have 4 color bands: A B C tol. The ABC_color is indexed by an integer in this version. A and B are the first and second color bands. C is the multipler
+ABC_color = {-2:'silver', -1:'gold', 0:'black', 1:'brown', 2:'red', 3:'orange',
+    4:'yellow', 5:'green', 6:'blue', 7:'violet', 8:'grey', 9:'white'}
+tol_color = {5:'gold', 10:'silver', 20:''}  # No color band for 20% tol
+
+
+## Convert to Rdes = M x 10^C with 10 <= M < 100
+
+
+
+#C=
+#M=
+
+
+## Find closest nominal value in terms of A B ( Percent Error = |R_actual − R_nominal| / R_nominal  × 100% ) R_actual=Rdes, R_nominal=Rcandidate
+
+
+
+
+# Get the A and B values with integer division and mod operations
+#A =
+#B =
+# Rclosest = AB*10**C  # Closest nominal resistance in ohms
+
+# Find the % error between the desired and nominal resistances
+# percent_error =
+
+
+#  print(f'Error between desired and nominal resistance values = {percent_error:.2f}%') also warning
+
+
+# Get colors and print color code# Write your code here :-)
+#print(f'Color code for {Rclosest:.1e} ohm with {tol}% tolerance is "{ABC_color[A]} {ABC_color[B]} {ABC_color[C]} {tol_color[tol]}"')
