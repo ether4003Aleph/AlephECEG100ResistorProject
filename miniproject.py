@@ -1,7 +1,6 @@
-# 在这里写上你的代码 :-)
 """
 Resistor color code calculator.
-Add your name here
+Xuanye Zhu
 """
 
 def get_input(Rmin, Rmax):
@@ -40,8 +39,11 @@ print(f'Finding closest nominal resistance value to {Rdes:g} ohm with tolerance 
 if tol == 5:
     Rnom = [10, 11, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36, 39, 43, 47, 51, 56, 62, 68, 75, 82, 91, 100]
 #elif tol == 10:
-
+elif tol == 10:
+    Rnom=[10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82, 100]
 #else:  # tol == 20 case
+else:
+    Rnom=[10, 15, 22, 33, 47, 68, 100]
 
 
 ## Assume we have 4 color bands: A B C tol. The ABC_color is indexed by an integer in this version. A and B are the first and second color bands. C is the multipler
@@ -52,10 +54,13 @@ tol_color = {5:'gold', 10:'silver', 20:''}  # No color band for 20% tol
 
 ## Convert to Rdes = M x 10^C with 10 <= M < 100
 
-
-
 #C=
 #M=
+
+import math
+
+C = math.floor(math.log10(Rdes)) - 1
+M = Rdes / (10 ** C)
 
 
 ## Find closest nominal value in terms of A B ( Percent Error = |R_actual − R_nominal| / R_nominal  × 100% ) R_actual=Rdes, R_nominal=Rcandidate
