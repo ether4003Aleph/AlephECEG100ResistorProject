@@ -101,13 +101,8 @@ while True:
 
             # Find the % error between the desired and nominal resistances
             # percent_error =
-            percent_error = abs(Rdes - Rclosest) / Rclosest * 100
-
+            percent_error = (Rdes - Rclosest) / Rclosest * 100
             #  print(f'Error between desired and nominal resistance values = {percent_error:.2f}%') also warning
-            if Rdes > Rclosest:
-                direction = "low"
-            else:
-                direction = "high"
 
             print(f'Error between desired and nominal resistance values = {percent_error:+.2f}%')
 
@@ -123,6 +118,17 @@ while True:
             band4 = tol_color[tol]
 
             print(f'Color code for {Rclosest:.1e} ohm with {tol}% tolerance is "{band1} {band2} {band3} {band4}"')
+
+
+
+
+
+
+
+
+
+
+
 
 
 
